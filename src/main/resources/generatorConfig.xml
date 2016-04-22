@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="D:\Development\Lib\maven_lib\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <property name="targetRuntime" value="MyBatis3"/>
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- root数据库-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.1.38:3306/haoxinqing?characterEncoding=utf8" userId="root"
+                        password="12345678">
+        </jdbcConnection>
+
+        <!--  微信数据库-->
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+        <!--connectionURL="jdbc:mysql://172.168.1.17:3306/wxdb?characterEncoding=utf8" userId="wxsupporter" password="123456">-->
+        <!--</jdbcConnection>-->
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--生成Model类存放位置-->
+        <javaModelGenerator targetPackage="com.hxq.mobile.doctor.common.entity"
+                            targetProject="D:\weixin\alice\com.hxq.db\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator targetPackage="/src/main/resources/mybatis"
+                         targetProject="D:\weixin\alice\com.hxq.db">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.hxq.mobile.doctor.common.mapper"
+                             targetProject="D:\weixin\alice\com.hxq.db\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!--生成对应表及类名-->
+        <table tableName="doctor_right" domainObjectName="DoctorRight" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"></table>
+        <table tableName="service_staff_info" domainObjectName="ServiceStaffInfo" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"></table>
+    </context>
+</generatorConfiguration>
